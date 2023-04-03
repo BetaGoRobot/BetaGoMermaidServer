@@ -1,4 +1,4 @@
-FROM ghcr.io/betagorobot/betago-golang:master as builder
+FROM ghcr.io/betagorobot/betagomermaidserver-golang:master as builder
 
 COPY betago.zip /data/
 
@@ -10,7 +10,7 @@ RUN CGO_ENABLED=0 go build -mod vendor -ldflags="-w -s" -o betaGo-source ./*.go 
     upx -9 -o betaGo betaGo-source
 
 
-FROM ghcr.io/betagorobot/betago-chrome:master as runner
+FROM ghcr.io/betagorobot/betagomermaidserver-chrome:master as runner
 # FROM scratch as runner
 
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
