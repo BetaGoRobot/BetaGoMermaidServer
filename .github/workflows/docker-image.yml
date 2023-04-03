@@ -53,7 +53,7 @@ jobs:
             -r \
             -9 \
             -q betago.zip \
-            . \
+            .
             DOCKER_BUILDKIT=1 docker build \
              . \
              --file scripts/betagoserver/Dockerfile \
